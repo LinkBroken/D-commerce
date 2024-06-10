@@ -1,4 +1,4 @@
-![image](https://github.com/LinkBroken/D-commerce/App-home.png)
+!![Alt text](/App-home.png)
 
 # DCommerce
 
