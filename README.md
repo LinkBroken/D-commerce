@@ -1,3 +1,5 @@
+![image](https://github.com/LinkBroken/D-commerce/App-home.png)
+
 # DCommerce
 
 DCommerce is an e-commerce platform built with React, Tailwind CSS, FontAwesome, and other technologies. It provides users with a seamless shopping experience, allowing them to browse through a variety of products and easily add items to their cart.
