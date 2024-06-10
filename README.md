@@ -6,19 +6,15 @@ Certainly! Here's the updated README file with the packages that the user needs 
 
 DCommerce is an e-commerce platform built with React, Tailwind CSS, FontAwesome, and other technologies. It provides users with a seamless shopping experience, allowing them to browse through a variety of products and easily add items to their cart.
 
-## Description
-
-DCommerce is a modern e-commerce platform developed using React, a powerful JavaScript library for building user interfaces. The project utilizes various React features and libraries to create a dynamic and interactive shopping experience.
-
 ### Features
 
 - **Product Listing**: Display a list of products available for purchase.
-- **Product Details**: View detailed information about each product, including images, descriptions, and prices.
+- **Product Details**: View detailed information about each product, including images,prices.
 - **Add to Cart**: Add products to the shopping cart with a single click.
-- **Cart Management**: View and manage items in the shopping cart, including removing items and updating quantities.
+- **Cart Management**: View and manage items in the shopping cart, including removing items
 - **Navigation**: Navigate between different sections of the application using React Router DOM.
 - **Animations**: Implement smooth animations using the AOS (Animate On Scroll) library.
-- **Responsive Design**: Ensure that the application is fully responsive and works well on various devices and screen sizes.
+
 
 ### Technologies Used
 
@@ -42,7 +38,7 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/LinkBroken/D-commerce.git
    ```
 
 2. Navigate to the project directory:
