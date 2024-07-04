@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { createContext, useReducer } from "react";
+import { createContext, useReducer,useState } from "react";
 
 export const Items = createContext({});
 
@@ -18,6 +18,8 @@ function itemsReducer(state, action) {
 }
 
 function ItemsContextProvider({ children }) {
+  const [cartCount, setCartCount] = useState(0);
+
   const initialState = {
     items: [],
   };
@@ -25,13 +27,14 @@ function ItemsContextProvider({ children }) {
 
   const addItem = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
+    setCartCount((prev) => prev + 1);
   };
   const removeItem = (id) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
   };
 
   return (
-    <Items.Provider value={{ state, addItem, removeItem }}>
+    <Items.Provider value={{ state, addItem, removeItem, cartCount }}>
       {children}
     </Items.Provider>
   );
