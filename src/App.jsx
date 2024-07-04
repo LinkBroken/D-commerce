@@ -6,14 +6,18 @@ import Home from './components/Home';
 import StoreProvider from './context/StoreDataContext';
 import MainSection from './components/MainSection';
 import Cart from './components/Cart';
-import ItemsContextProvider from './context/CartContext';
+import ItemsContextProvider, { Items } from './context/CartContext';
 import SearchBar from './components/SearchBar';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from '@fortawesome/free-brands-svg-icons';
+import Modal from './components/Modal/Modal';
 function App() {
   const searchRef = useRef();
+  const modalRef = useRef(null);
+
   return (
+    <>
     <StoreProvider>
       <ItemsContextProvider>
       <Router>
@@ -27,7 +31,7 @@ function App() {
         inputClass="border-solid border-2 border-black w-full p-1 rounded-2xl text-black"
         type="text"
         ref={searchRef}
-        className="flex items-center just pt-5 gap-4 pb-5"
+        className="flex items-center justify-center pt-5 gap-4 pb-5"
         placeholder="Search for something"
       />
         </Nav>
@@ -42,6 +46,7 @@ function App() {
       </ItemsContextProvider>
       <Footer/>
     </StoreProvider>
+    </>
   );
 }
 

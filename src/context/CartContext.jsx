@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { createContext, useReducer,useState } from "react";
+import { createContext, useEffect, useReducer,useState } from "react";
 
 export const Items = createContext({});
 
@@ -24,7 +24,13 @@ function ItemsContextProvider({ children }) {
     items: [],
   };
   const [state, dispatch] = useReducer(itemsReducer, initialState);
+  const [modal, setModal] = useState(false);
 
+  useEffect(() => {
+    modal? setTimeout(() => {
+      setModal(false);
+    }, 1000) : null;
+  }, [modal]);
   const addItem = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
     setCartCount((prev) => prev + 1);
@@ -34,7 +40,7 @@ function ItemsContextProvider({ children }) {
   };
 
   return (
-    <Items.Provider value={{ state, addItem, removeItem, cartCount }}>
+    <Items.Provider value={{ state, addItem, removeItem, cartCount,setModal,modal }}>
       {children}
     </Items.Provider>
   );
