@@ -12,10 +12,10 @@ const Products = forwardRef(
       buttonClass,
       buttonClick,
       itemClass,
+      onChange
     },
     ref
   ) => {
-    // const [value, setValue] = useState("")
     return (
       <div className={className}>
         <h1>${price}</h1>
@@ -28,8 +28,8 @@ const Products = forwardRef(
             type="number"
             name="items"
             id=""
-            // value={value}
-            // onChange={()=> setValue()}
+            onChange={onChange}
+
           />
         </section>
         <button className={buttonClass} onClick={buttonClick}>
@@ -50,6 +50,7 @@ Products.propTypes = {
   buttonClass: PropTypes.string,
   buttonClick: PropTypes.func.isRequired,
   itemClass: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Products;

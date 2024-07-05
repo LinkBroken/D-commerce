@@ -1,4 +1,4 @@
-import { useContext, useEffect,useRef } from "react";
+import { useContext, useEffect,useRef,useState } from "react";
 import { store } from "../context/StoreDataContext";
 import Products from "./Products";
 import { Items } from "../context/CartContext";
@@ -8,8 +8,8 @@ import Modal from "./Modal/Modal";
 function MainSection() {
   const { storeData } = useContext(store);
   const { addItem,modal, setModal } = useContext(Items);
-  const inputValue = useRef(null);
-  
+  const [itemCount,setItemCount] = useState(0);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -37,14 +37,14 @@ function MainSection() {
               itemClass="w-3/4"
               buttonClass="p-3 bg-yellow-300 rounded-3xl"
               buttonClick={() => {
-                addItem({...item, id:index}, inputValue.current.value);
+                addItem({...item, id:index}, itemCount);
                 // setNavi(true);
-                console.log(inputValue.current)
+                console.log(itemCount)
                 setModal(true);
 
                 
               }}
-              ref={inputValue}
+              onChange={(e)=>setItemCount(e.target.value)}
             />
           ))}
         </div>

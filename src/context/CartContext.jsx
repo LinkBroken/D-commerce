@@ -31,9 +31,9 @@ function ItemsContextProvider({ children }) {
       setModal(false);
     }, 1000) : null;
   }, [modal]);
-  const addItem = (item, num) => {
+  const addItem = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
-    setCartCount((prev) => prev + parseInt(num));
+    setCartCount((prev) => prev + 1);
   };
   const removeItem = (id) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
