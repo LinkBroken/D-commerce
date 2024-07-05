@@ -25,18 +25,20 @@ function ItemsContextProvider({ children }) {
   };
   const [state, dispatch] = useReducer(itemsReducer, initialState);
   const [modal, setModal] = useState(false);
-
+  
   useEffect(() => {
     modal? setTimeout(() => {
       setModal(false);
     }, 1000) : null;
   }, [modal]);
-  const addItem = (item) => {
+  const addItem = (item, num) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
-    setCartCount((prev) => prev + 1);
+    setCartCount((prev) => prev + parseInt(num));
   };
   const removeItem = (id) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
+    setCartCount((prev) => prev - 1);
+
   };
 
   return (

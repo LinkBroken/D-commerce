@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect,useRef } from "react";
 import { store } from "../context/StoreDataContext";
 import Products from "./Products";
 import { Items } from "../context/CartContext";
@@ -8,12 +8,16 @@ import Modal from "./Modal/Modal";
 function MainSection() {
   const { storeData } = useContext(store);
   const { addItem,modal, setModal } = useContext(Items);
+  const inputValue = useRef(null);
+  
   useEffect(() => {
     AOS.init();
   }, []);
   return (
     <>
-        <Modal   />
+      {storeData?
+      <>
+      <Modal   />
 
       <div className="pt-10 flex justify-evenly w-screen">
         <div
@@ -28,20 +32,27 @@ function MainSection() {
               className="flex flex-col pt-8 h-96 w-3/4  justify-evenly items-center border-zinc-200 border-solid border-2"
               image={item.image}
               price={item.price}
-              // title={item.title}
+              title={item.title}
               imageClass="w-1/3"
+              itemClass="w-3/4"
               buttonClass="p-3 bg-yellow-300 rounded-3xl"
               buttonClick={() => {
-                addItem({ ...item, id: index });
+                addItem({...item, id:index}, inputValue.current.value);
                 // setNavi(true);
-                console.log(modal)
-                setModal(true)
+                console.log(inputValue.current)
+                setModal(true);
+
                 
               }}
+              ref={inputValue}
             />
           ))}
         </div>
+      </div></>: 
+      <div className="flex flex-col items-center justify-center w-screen h-screen">
+      <h1 className=" text-6xl">No internet connection</h1>
       </div>
+      }
     </>
   );
 }

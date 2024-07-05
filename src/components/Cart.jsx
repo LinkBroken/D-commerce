@@ -15,7 +15,7 @@ export default function Cart() {
         <div className="grid grid-cols-2 gap-8 place-items-center pt-10 pb-10">
           {state.items.map((item,index) => (
             <div className="flex flex-col pt-2 h-96 w-40 justify-evenly items-center border-zinc-200 border-solid border-2" key={index}>
-              {/* <p>{item.title}</p> */}
+              <p>{item.title}</p>
               <p>{item.price}$</p>
               <img src={item.image} alt={item.title} />
               <button 

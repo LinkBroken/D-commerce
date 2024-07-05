@@ -16,6 +16,7 @@ const Modal = ({...props})=>{
             <section className="flex justify-evenly w-full">
             <Link to="/cart" className=" bg-green-400 p-2 rounded-xl">Checkout</Link>
             <button className=" bg-red-400 p-2 rounded-xl" onClick={()=> setModal(prev=>!prev)}>Exit</button>
+            
             </section>
         </dialog>
         
