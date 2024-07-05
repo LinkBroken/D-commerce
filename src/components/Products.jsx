@@ -18,13 +18,19 @@ const Products = forwardRef(
   ) => {
     return (
       <div className={className}>
-        <h1>${price}</h1>
+        
         <p className={itemClass}>{title}</p>
         <img className={imageClass} src={image} alt={title} />
+        <h1>${price}</h1>
+        
+        <div className="flex flex-row-reverse items-center justify-evenly w-full p-4">
+        <button className={buttonClass} onClick={buttonClick}>
+          Add
+        </button>
         <section className="flex justify-evenly">
           <input
             ref={ref}
-            className=" bg-slate-200 w-1/3 text-black "
+            className=" bg-slate-200 w-3/4 text-black "
             type="number"
             name="items"
             id=""
@@ -32,9 +38,9 @@ const Products = forwardRef(
 
           />
         </section>
-        <button className={buttonClass} onClick={buttonClick}>
-          Add to Cart
-        </button>
+        
+        
+        </div>
       </div>
     );
   }

@@ -27,7 +27,7 @@ function App() {
             <FontAwesomeIcon icon={icon}/>
           </div>
         <SearchBar
-        buttonClass="p-3 bg-yellow-300 rounded-3xl"
+        buttonClass="p-3 bg-orange-400 rounded-3xl"
         inputClass="border-solid border-2 border-black w-full p-1 rounded-2xl text-black"
         type="text"
         ref={searchRef}

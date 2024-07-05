@@ -4,9 +4,13 @@ import { createContext, useEffect, useReducer,useState } from "react";
 export const Items = createContext({});
 
 function itemsReducer(state, action) {
+  const items = { ...state, items: [action.payload, ...state.items] }
+  
   switch (action.type) {
+    
     case "ADD_TO_CART":
-      return { ...state, items: [action.payload, ...state.items] };
+      
+      return items ;
     case "REMOVE_ITEM":
       return {
         ...state,
@@ -29,7 +33,7 @@ function ItemsContextProvider({ children }) {
   useEffect(() => {
     modal? setTimeout(() => {
       setModal(false);
-    }, 1000) : null;
+    }, 4000) : null;
   }, [modal]);
   const addItem = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
