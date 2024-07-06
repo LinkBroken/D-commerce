@@ -15,7 +15,7 @@ function MainSection() {
   }, []);
   return (
     <>
-      {storeData?
+      {storeData.length>0?
       <>
       <Modal   />
 
@@ -26,7 +26,7 @@ function MainSection() {
           data-aos="fade-right"
           className="grid grid-cols-3 place-items-center gap-6 h-full w-full"
         >
-          {storeData.map((item, index) => (
+          {[...storeData].map((item, index) => (
             <Products
               key={index}
               className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6  justify-evenly items-center border-zinc-200 border-solid border-2 "
@@ -38,7 +38,6 @@ function MainSection() {
               buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
               buttonClick={() => {
                 addItem({...item, id:index, count: itemCount});
-                // setNavi(true);
                 console.log({...item})
                 setModal(true);
 
@@ -50,7 +49,7 @@ function MainSection() {
         </div>
       </div></>: 
       <div className="flex flex-col items-center justify-center w-screen h-screen">
-      <h1 className=" text-6xl">No internet connection</h1>
+      <h1 className=" text-6xl">Error Fetching load, Reload</h1>
       </div>
       }
     </>
