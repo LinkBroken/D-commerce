@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import { Items } from "../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAccusoft as icon } from "@fortawesome/free-brands-svg-icons";
+import { faDropbox as icon } from "@fortawesome/free-brands-svg-icons";
 function Nav({ children, ...props }) {
   const { cartCount } = useContext(Items);
   return (

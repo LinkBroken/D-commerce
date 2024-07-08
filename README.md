@@ -14,6 +14,7 @@ DCommerce is an e-commerce platform built with React, Tailwind CSS, FontAwesome,
 - **Navigation**: Navigate between different sections of the application using React Router DOM.
 - **Animations**: Implement smooth animations using the AOS (Animate On Scroll) library.
 
+- **Product Search**: Implemented a search feature that allows users to search for products by name / title
 
 ### Technologies Used
 

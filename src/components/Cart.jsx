@@ -24,7 +24,7 @@ export default function Cart() {
                 className="flex flex-col justify-center pt-2 w-1/2 h-full gap-6 items-center rounded-xl border-zinc-200 border-solid border-2"
                 key={index}
               >
-                <p className="text-center">{item.title}</p>
+                <p className="text-center text-wrap w-5/6">{item.title}</p>
                 <p>Quantitiy {item.count}</p>
                 <img className="w-2/3" src={item.image} alt={item.title} />
                 <p>Total Price: {parseInt(item.price * item.count)}$</p>
