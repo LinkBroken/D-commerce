@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import propTypes from "prop-types"
+import propTypes from "prop-types";
 // eslint-disable-next-line react-refresh/only-export-components
 export const store = createContext({});
 
@@ -15,5 +15,5 @@ export default function StoreProvider({ children }) {
 }
 
 StoreProvider.propTypes = {
-    children: propTypes.node.isRequired
-}
+  children: propTypes.node.isRequired,
+};

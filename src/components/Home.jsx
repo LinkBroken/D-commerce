@@ -15,7 +15,10 @@ function Home() {
         <h1 className="text-blue-500 text-4xl absolute bottom-1/2 right-1/4">
           Sale up to 50% off
         </h1>
-        <Link to="/main" className="p-3 bg-yellow-300 rounded-3xl text-slate-700 absolute bottom-1/4 right-1/3">
+        <Link
+          to="/main"
+          className="p-3 bg-yellow-300 rounded-3xl text-slate-700 absolute bottom-1/4 right-1/3"
+        >
           Show Products
         </Link>
       </div>
