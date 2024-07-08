@@ -9,7 +9,7 @@ export default function StoreProvider({ children }) {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((Response) => Response.json())
-      .then((data) => setStoreData(data));
+      .then(async (data) => setStoreData(await data));
   }, []);
   return <store.Provider value={{ storeData }}>{children}</store.Provider>;
 }

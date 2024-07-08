@@ -14,10 +14,7 @@ import { faCcAmazonPay as icon } from '@fortawesome/free-brands-svg-icons';
 import Modal from './components/Modal/Modal';
 import Results from './components/Results';
 function App() {
-  const searchRef = useRef();
   const modalRef = useRef(null);
-  const {setSearch} = useContext(Items);
-  // const navigate = useNavigate();
 
   return (
     <>
@@ -30,15 +27,10 @@ function App() {
             <FontAwesomeIcon icon={icon}/>
           </div>
         <SearchBar
-        buttonClick={()=>{ 
-          // setSearch(searchRef.current.value);
-          // navigate("/results")
-          console.log(searchRef.current.value)
-        }}
+       
         buttonClass="p-3 bg-orange-400 rounded-3xl"
         inputClass="border-solid border-2 border-black w-full p-1 rounded-2xl text-black"
         type="text"
-        ref={searchRef}
         className="flex items-center justify-center pt-5 gap-4 pb-5"
         placeholder="Search for something"
       />

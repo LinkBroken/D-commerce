@@ -1,20 +1,26 @@
-import { forwardRef } from "react";
 import PropTypes from "prop-types";
+import { useRef,useContext } from "react";
+import { Items } from "../context/CartContext";
+import { redirect, useNavigate } from "react-router-dom";
+const SearchBar = function SearchBar({ className, buttonClass, inputClass, type,children,placeholder}) {
+  const inputRef = useRef();
+  const {setSearch} = useContext(Items);
+  const navigate = useNavigate();
 
-const SearchBar = forwardRef(function SearchBar(
-  { className, buttonClass, inputClass, type, buttonClick,children,placeholder},
-  ref
-) {
   return (
     <div className={className}>
-      <input className={inputClass} ref={ref} type={type} placeholder={placeholder} />
-      <button onClick={buttonClick} className={buttonClass}>
+      <input className={inputClass} ref={inputRef} type={type} placeholder={placeholder} />
+      <button onClick={()=>{
+        inputRef.current&& setSearch(inputRef.current.value);
+        console.log(inputRef.current.value)
+        navigate('/results')
+      }} className={buttonClass}>
         Search
       </button>
       {children}
     </div>
   );
-});
+};
 
 SearchBar.propTypes = {
   className: PropTypes.string,
