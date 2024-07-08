@@ -17,7 +17,7 @@ function Home() {
         </h1>
         <Link
           to="/main"
-          className="p-3 bg-yellow-300 rounded-3xl text-slate-700 absolute bottom-1/4 right-1/3"
+          className="p-3 bg-orange-400 rounded-3xl text-white absolute bottom-1/4 right-1/3"
         >
           Show Products
         </Link>
@@ -30,7 +30,7 @@ function Home() {
           placeholder="Email Address"
           className="w-1/3 p-2 mb-4 border border-gray-300 rounded"
         />
-        <button className="p-3 bg-yellow-300 rounded-3xl">Subscribe</button>
+        <button className="p-3 bg-orange-400 text-white rounded-3xl">Subscribe</button>
       </div>
     </>
   );

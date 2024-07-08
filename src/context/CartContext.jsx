@@ -21,7 +21,7 @@ function itemsReducer(state, action) {
 }
 
 function ItemsContextProvider({ children }) {
-  const [cartCount, setCartCount] = useState(0);
+  // const [cartCount, setCartCount] = useState(0);
 
   const initialState = {
     items: [],
@@ -39,11 +39,11 @@ function ItemsContextProvider({ children }) {
   }, [modal]);
   const addItem = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
-    setCartCount((prev) => prev + 1);
+    // setCartCount((prev) => prev + 1);
   };
   const removeItem = (id) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
-    setCartCount((prev) => prev - 1);
+    // setCartCount((prev) => prev - 1);
   };
 
   return (
@@ -52,7 +52,6 @@ function ItemsContextProvider({ children }) {
         state,
         addItem,
         removeItem,
-        cartCount,
         setModal,
         modal,
         search,

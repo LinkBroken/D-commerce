@@ -37,8 +37,7 @@ function MainSection() {
                   itemClass="w-3/4 text-md bold mb-6"
                   buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
                   buttonClick={() => {
-                    addItem({ ...item, id: index, count: itemCount });
-                    console.log({ ...item });
+                    addItem({ ...item, id: Math.random(), count: itemCount });
                     setModal(true);
                   }}
                   onChange={(e) => setItemCount(e.target.value)}
@@ -49,7 +48,7 @@ function MainSection() {
         </>
       ) : (
         <div className="flex flex-col items-center justify-center w-screen h-screen">
-          <h1 className=" text-6xl">Error Fetching load, Reload</h1>
+          <h1 className=" text-6xl">Loading ...</h1>
         </div>
       )}
     </>

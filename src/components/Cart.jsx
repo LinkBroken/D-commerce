@@ -9,11 +9,7 @@ export default function Cart() {
     setCartState(state.items.length > 0);
   }, [state.items]);
   const data = new Set(state.items);
-  // const items = Array.from(data)
-  // console.log(items)
-  for (let i of data) {
-    console.log(i);
-  }
+
   return (
     <>
       {cartState ? (
