@@ -1,5 +1,5 @@
-![Alt text](/App-home.png)
-![Alt text](/App-banner.png)
+
+![Alt text](/src/app.PNG)
 
 # DCommerce
 
