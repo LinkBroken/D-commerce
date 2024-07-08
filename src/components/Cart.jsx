@@ -8,12 +8,17 @@ export default function Cart() {
   useEffect(() => {
     setCartState(state.items.length > 0);
   }, [state.items]);
-
+  const data = new Set(state.items)
+  // const items = Array.from(data)
+  // console.log(items)
+  for (let i of data){
+    console.log(i)
+  }
   return (
     <>
       {cartState ? (
         <div className="grid grid-cols-3 w-full gap-8 place-items-center pt-10 pb-10">
-          {[...state.items].map((item,index) => (
+          {data&& [...data].map((item,index) => (
             <div className="flex flex-col justify-center pt-2 w-1/2 h-full gap-6 items-center rounded-xl border-zinc-200 border-solid border-2" key={index}>
               <p className="text-center">{item.title}</p>
               <p>Quantitiy  {item.count}</p>

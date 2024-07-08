@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, redirect,useNavigate } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -12,9 +12,12 @@ import { useRef, useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from '@fortawesome/free-brands-svg-icons';
 import Modal from './components/Modal/Modal';
+import Results from './components/Results';
 function App() {
   const searchRef = useRef();
   const modalRef = useRef(null);
+  const {setSearch} = useContext(Items);
+  // const navigate = useNavigate();
 
   return (
     <>
@@ -27,6 +30,11 @@ function App() {
             <FontAwesomeIcon icon={icon}/>
           </div>
         <SearchBar
+        buttonClick={()=>{ 
+          // setSearch(searchRef.current.value);
+          // navigate("/results")
+          console.log(searchRef.current.value)
+        }}
         buttonClass="p-3 bg-orange-400 rounded-3xl"
         inputClass="border-solid border-2 border-black w-full p-1 rounded-2xl text-black"
         type="text"
@@ -41,6 +49,7 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/main" element={<MainSection />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/results" element={<Results/>} />
         </Routes>
       </Router>
       </ItemsContextProvider>

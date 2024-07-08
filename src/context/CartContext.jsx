@@ -9,7 +9,7 @@ function itemsReducer(state, action) {
   switch (action.type) {
     
     case "ADD_TO_CART":
-      console.log(state.items.map(item=> new Set(item)))
+      // console.log(state.items.map(item=> new Set(item)))
       return { ...state, items: [action.payload, ...state.items] } ;
     case "REMOVE_ITEM":
       return {
@@ -29,6 +29,7 @@ function ItemsContextProvider({ children }) {
   };
   const [state, dispatch] = useReducer(itemsReducer, initialState);
   const [modal, setModal] = useState(false);
+  const [search, setSearch] = useState("");
   
   useEffect(() => {
     modal? setTimeout(() => {
@@ -46,7 +47,7 @@ function ItemsContextProvider({ children }) {
   };
 
   return (
-    <Items.Provider value={{ state, addItem, removeItem, cartCount,setModal,modal }}>
+    <Items.Provider value={{ state, addItem, removeItem, cartCount,setModal,modal, search,setSearch }}>
       {children}
     </Items.Provider>
   );

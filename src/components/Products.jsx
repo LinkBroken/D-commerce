@@ -34,6 +34,7 @@ const Products = forwardRef(
             type="number"
             name="items"
             id=""
+            min={1}
             onChange={onChange}
 
           />
