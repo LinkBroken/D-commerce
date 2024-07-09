@@ -29,7 +29,7 @@ function MainSection() {
               {[...storeData].map((item, index) => (
                 <Products
                   key={index}
-                  className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6  justify-evenly items-center border-zinc-200 border-solid border-2 "
+                  className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
                   image={item.image}
                   price={item.price}
                   title={item.title}

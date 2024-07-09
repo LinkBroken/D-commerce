@@ -17,6 +17,7 @@ DCommerce is an e-commerce platform built with React, Tailwind CSS, FontAwesome,
 - **Product Search**: Implemented a search feature that allows users to search for products by name / title
 
 - **Category Selection**: Implemented a category selection feature that allows users to filter products by specific categories, such as electronics, clothing, and more.
+- **Price Selection**: a price selection feature that allows users to filter products by specific price ranges, making it easier to find items within their budget
 ### Technologies Used
 
 - **React**: A JavaScript library for building user interfaces, utilizing hooks such as `useState`, `useEffect`, `useReducer`, and `useContext` for state management and side effects.
