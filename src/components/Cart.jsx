@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { Items } from "../context/CartContext";
 
 export default function Cart() {
-  const { state, removeItem } = useContext(Items);
+  const { state, removeItem,clearCart } = useContext(Items);
   const [cartState, setCartState] = useState(state.items.length > 0);
 
   useEffect(() => {
@@ -12,7 +12,19 @@ export default function Cart() {
 
   return (
     <>
+    
       {cartState ? (
+        <>
+        <>
+        <button
+                    className="p-3 w-1/8 ml-4 mt-4 h-12 bg-red-700 rounded-3xl text-white"
+                    onClick={() => {
+                      clearCart();
+                    }}
+                  >
+                    Clear Cart
+                  </button>
+        </>
         <div className="grid grid-cols-3 w-full gap-8 place-items-center pt-10 pb-10">
           {data &&
             [...data].map((item, index) => (
@@ -45,6 +57,7 @@ export default function Cart() {
               </div>
             ))}
         </div>
+        </>
       ) : (
         <p className="text-center pt-64 pb-64 text-3xl">No Items in Cart</p>
       )}

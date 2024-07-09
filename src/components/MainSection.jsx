@@ -19,7 +19,7 @@ function MainSection() {
         <>
           <Modal />
 
-          <div className="pt-10 flex justify-evenly w-screen">
+          <div className="pt-10 flex justify-evenly w-full">
             <div
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"

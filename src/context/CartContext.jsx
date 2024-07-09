@@ -15,6 +15,8 @@ function itemsReducer(state, action) {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
       };
+    case "CLEAR_CART":
+        return {items:[]};
     default:
       return state;
   }
@@ -45,6 +47,9 @@ function ItemsContextProvider({ children }) {
     dispatch({ type: "REMOVE_ITEM", payload: id });
     // setCartCount((prev) => prev - 1);
   };
+  const clearCart=()=>{
+    dispatch({ type: "CLEAR_CART"})
+  }
 
   return (
     <Items.Provider
@@ -56,6 +61,7 @@ function ItemsContextProvider({ children }) {
         modal,
         search,
         setSearch,
+        clearCart
       }}
     >
       {children}

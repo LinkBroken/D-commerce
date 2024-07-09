@@ -26,7 +26,7 @@ function Results() {
     );
   }
   return (
-    <div className="flex flex-col items-center gap-8 pt-4">
+    <div className="flex flex-col items-center gap-8 pt-4 min-h-screen">
       <div className="flex flex-row-reverse justify-evenly w-full">
         <div className="flex flex-col items-center  border border-black w-1/6 h-1/2 shadow-sm shadow-black rounded-xl">
           <h1>Price</h1>
@@ -80,7 +80,8 @@ function Results() {
           </section>
         </div>
       </div>
-      <div className="pt-10 flex justify-evenly w-screen mb-8">
+      {[...storeData].length>=1  ?(
+        <div className="pt-10 flex justify-evenly  mb-8">
         <Modal />
 
         <div
@@ -88,8 +89,10 @@ function Results() {
           data-aos-easing="ease-in-out"
           data-aos="fade-right"
           className="grid grid-cols-3 place-items-center gap-6 h-full w-full"
-        >
+        > 
+  
           {[...storeData].map(
+            // fix padding issue regarding the products section
             (item, index) =>
               // console.log(item.category) &&
               item.title.toLowerCase().includes(search.toLowerCase()) &&
@@ -113,7 +116,7 @@ function Results() {
               )
           )}
         </div>
-      </div>
+      </div>) : <h1 className=" text-3xl text-center">No Results Found</h1>}
     </div>
   );
 }
