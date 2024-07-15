@@ -21,6 +21,7 @@ const SearchBar = function SearchBar({
         ref={inputRef}
         type={type}
         placeholder={placeholder}
+        required
       />
       <button
         onClick={() => {

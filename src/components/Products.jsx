@@ -13,6 +13,7 @@ const Products = forwardRef(
       buttonClick,
       itemClass,
       onChange,
+      value
     },
     ref
   ) => {
@@ -35,6 +36,7 @@ const Products = forwardRef(
               id=""
               min={1}
               onChange={onChange}
+              value={value}
             />
           </section>
         </div>
@@ -54,6 +56,7 @@ Products.propTypes = {
   buttonClick: PropTypes.func.isRequired,
   itemClass: PropTypes.string,
   onChange: PropTypes.func,
+  value: PropTypes.number
 };
 
 export default Products;

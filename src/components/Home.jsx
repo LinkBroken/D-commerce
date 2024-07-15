@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import Image from "../assets/background.png";
+import { Suspense } from "react";
 
 function Home() {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="bg-slate-100 pt-8">
         <h1 className="p-8 text-4xl text-yellow-500">
           Welcome to DCommerce, your one-stop shop for all your product needs!
@@ -32,7 +33,7 @@ function Home() {
         />
         <button className="p-3 bg-orange-400 text-white rounded-3xl">Subscribe</button>
       </div>
-    </>
+    </Suspense>
   );
 }
 

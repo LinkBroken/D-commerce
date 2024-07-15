@@ -5,16 +5,18 @@ import { Items } from "../context/CartContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Modal from "./Modal/Modal";
+
 function MainSection() {
   const { storeData } = useContext(store);
   const { addItem, setModal } = useContext(Items);
-  const [itemCount, setItemCount] = useState(0);
+  const [itemCount, setItemCount] = useState(1);
 
   useEffect(() => {
     AOS.init();
   }, []);
   return (
     <>
+    
       {storeData.length > 0 ? (
         <>
           <Modal />
