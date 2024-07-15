@@ -13,9 +13,10 @@ const SearchBar = function SearchBar({
   const inputRef = useRef();
   const { setSearch } = useContext(Items);
   const navigate = useNavigate();
-
   return (
     <div className={className}>
+      <>
+      {inputRef?.current&&inputRef?.current.value.trim()!=""? '': <p className=" w-3/4 text-red-600 sans ">Empty Search</p> }
       <input
         className={inputClass}
         ref={inputRef}
@@ -23,16 +24,19 @@ const SearchBar = function SearchBar({
         placeholder={placeholder}
         required
       />
+      
       <button
         onClick={() => {
           inputRef.current && setSearch(inputRef.current.value);
           console.log(inputRef.current.value);
-          navigate("/results");
+          inputRef.current?.value.trim() != "" ?navigate("/results"): null;
         }}
         className={buttonClass}
       >
+
         Search
       </button>
+      </>
       {children}
     </div>
   );
