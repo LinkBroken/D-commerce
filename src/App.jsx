@@ -29,7 +29,7 @@ function App() {
               </div>
               <SearchBar
                 buttonClass="p-3 bg-orange-400 rounded-3xl"
-                inputClass="border-solid border-2 border-black w-full p-1 rounded-2xl text-black text-center"
+                inputClass="border-solid border-2 border-black w-full p-1 h-3/4 rounded-2xl text-black text-center"
                 type="text"
                 className="flex items-center justify-center pt-5 gap-4 pb-5"
                 placeholder="Search for something"
