@@ -5,6 +5,7 @@ import { Items } from "../context/CartContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Modal from "./Modal/Modal";
+import Skeleton from "./Skeleton/Skeleton";
 
 function MainSection() {
   const { storeData } = useContext(store);
@@ -49,8 +50,10 @@ function MainSection() {
           </div>
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center w-screen h-screen">
-          <h1 className=" text-6xl">Loading ...</h1>
+        <div className=" mt-32 flex justify-evenly w-screen min-h-screen gap-11">
+          <Skeleton/>
+          <Skeleton/>
+          <Skeleton/>
         </div>
       )}
     </>

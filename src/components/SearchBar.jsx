@@ -39,7 +39,6 @@ const SearchBar = function SearchBar({
         }}
         className={buttonClass}
       >
-
         Search
       </button>
       </>
