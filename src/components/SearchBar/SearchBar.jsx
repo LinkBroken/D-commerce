@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useRef, useContext } from "react";
-import { Items } from "../context/CartContext";
+import { Items } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const SearchBar = function SearchBar({

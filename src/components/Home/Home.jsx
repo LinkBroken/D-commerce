@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Image from "../assets/background.png";
+import Image from "../../assets/background.png";
 import { Suspense } from "react";
 
 function Home() {
@@ -27,11 +27,14 @@ function Home() {
       <div className="flex flex-col py-8 pt-40 justify-center items-center bg-white">
         <h1 className="text-2xl mb-4">Subscribe to Newsletter</h1>
         <input
-          type="text"
+          type="email"
+          name="email"
           placeholder="Email Address"
           className="w-1/3 p-2 mb-4 border border-gray-300 rounded"
         />
-        <button className="p-3 bg-orange-400 text-white rounded-3xl">Subscribe</button>
+        <button className="p-3 bg-orange-400 text-white rounded-3xl">
+          Subscribe
+        </button>
       </div>
     </Suspense>
   );

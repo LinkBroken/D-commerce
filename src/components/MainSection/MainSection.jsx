@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { store } from "../context/StoreDataContext";
-import Products from "./Products";
-import { Items } from "../context/CartContext";
+import { store } from "../../context/StoreDataContext";
+import Products from "../Products/Products";
+import { Items } from "../../context/CartContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Modal from "./Modal/Modal";
-import Skeleton from "./Skeleton/Skeleton";
+import Modal from "../Modal/Modal";
+import Skeleton from "../Skeleton/Skeleton";
 
 function MainSection() {
   const { storeData } = useContext(store);
@@ -21,8 +21,8 @@ function MainSection() {
       {storeData.length > 0 ? (
         <>
           <Modal />
-
-          <div className="pt-10 flex justify-evenly w-full">
+{/* increase font size*/}
+          <div className="pt-10 flex justify-evenly w-full ">
             <div
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"
@@ -50,7 +50,7 @@ function MainSection() {
           </div>
         </>
       ) : (
-        <div className=" mt-32 flex justify-evenly w-screen min-h-screen gap-11">
+        <div className=" mt-20 flex justify-evenly w-screen min-h-screen gap-11">
           <Skeleton/>
           <Skeleton/>
           <Skeleton/>

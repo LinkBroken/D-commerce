@@ -5,17 +5,17 @@ import {
   Route,
 
 } from "react-router-dom";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
 import StoreProvider from "./context/StoreDataContext";
-import MainSection from "./components/MainSection";
-import Cart from "./components/Cart";
+import MainSection from "./components/MainSection/MainSection";
+import Cart from "./components/Cart/Cart";
 import ItemsContextProvider from "./context/CartContext";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from "@fortawesome/free-brands-svg-icons";
-import Results from "./components/Results";
+import Results from "./components/Results/Results";
 function App() {
   return (
     <>

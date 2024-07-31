@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { Items } from "../context/CartContext";
+import { Items } from "../../context/CartContext";
 
 export default function Cart() {
   const { state, removeItem, clearCart } = useContext(Items);
@@ -11,7 +11,7 @@ export default function Cart() {
   const data = new Set(state.items);
 
   return (
-    <>
+    <div className="min-h-96">
       {cartState ? (
         <>
           <>
@@ -24,7 +24,7 @@ export default function Cart() {
               Clear Cart
             </button>
           </>
-          <div className="grid grid-cols-3 w-full gap-8 place-items-center pt-10 pb-10">
+          <div className="grid grid-cols-3 w-full gap-8 place-items-center pt-10 pb-10 ">
             {data &&
               [...data].map((item, index) => (
                 <div
@@ -60,6 +60,6 @@ export default function Cart() {
       ) : (
         <p className="text-center pt-64 pb-64 text-3xl">No Items in Cart</p>
       )}
-    </>
+    </div>
   );
 }
