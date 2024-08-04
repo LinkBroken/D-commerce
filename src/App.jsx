@@ -16,11 +16,15 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from "@fortawesome/free-brands-svg-icons";
 import Results from "./components/Results/Results";
+import Login from "./components/Login/Login";
+import AuthContextProvider from "./context/AuthContext";
+import PrivateRoutes from "./auth/ProtectedRoutes";
 function App() {
   return (
     <>
       <StoreProvider>
         <ItemsContextProvider>
+          <AuthContextProvider>
           <Router>
             <Nav className="flex w-1/3 justify-between items-center ">
               <div className="flex flex-row-reverse items-center gap-4 ">
@@ -35,15 +39,26 @@ function App() {
                 placeholder="Search for something"
               />
             </Nav>
-
             <Routes>
-              <Route path="/" element={<Home />} />
+            
+            </Routes>
+            <Routes>
+
+            <Route path="/cart" element={<PrivateRoutes/>}>
+            <Route path="/cart/items" element={<Cart />} />
+            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+
               <Route path="/footer" element={<Footer />} />
               <Route path="/main" element={<MainSection />} />
-              <Route path="/cart" element={<Cart />} />
+              
               <Route path="/results" element={<Results />} />
+            {/* </Route> */}
+
             </Routes>
           </Router>
+          </AuthContextProvider>
         </ItemsContextProvider>
         <Footer />
       </StoreProvider>
