@@ -6,22 +6,35 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Modal from "../Modal/Modal";
 import Skeleton from "../Skeleton/Skeleton";
-
+import axios from "axios";
 function MainSection() {
   const { storeData } = useContext(store);
   const { addItem, setModal } = useContext(Items);
   const [itemCount, setItemCount] = useState(1);
-
   useEffect(() => {
     AOS.init();
+   
+   try{
+    const data = async ()=> { 
+      await axios.post("http://localhost:3000/books/",{
+      name: "mohamed",
+      status: "online"
+    })}
+    data()
+  }
+  catch(err){
+    console.log(err)
+}
+    
+    
   }, []);
   return (
     <>
-    
+
       {storeData.length > 0 ? (
         <>
           <Modal />
-{/* increase font size*/}
+          {/* increase font size*/}
           <div className="pt-10 flex justify-evenly w-full ">
             <div
               data-aos-duration="1000"
@@ -42,6 +55,7 @@ function MainSection() {
                   buttonClick={() => {
                     addItem({ ...item, id: Math.random(), count: itemCount });
                     setModal(true);
+
                   }}
                   onChange={(e) => setItemCount(e.target.value)}
                 />
@@ -51,9 +65,9 @@ function MainSection() {
         </>
       ) : (
         <div className=" mt-20 flex justify-evenly w-screen min-h-screen gap-11">
-          <Skeleton/>
-          <Skeleton/>
-          <Skeleton/>
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
         </div>
       )}
     </>

@@ -12,8 +12,8 @@ function Nav({ children, ...props }) {
       <div {...props}>
         <Link to="/">Home</Link>
         <Link to="/Main">Products</Link>
-        {/* <Link to="/Cart">Cart</Link> */}
-        <Link to="/Cart">
+        <Link to="/login">login</Link>
+        <Link to="/cart/items">
           <FontAwesomeIcon icon={icon} /> {state.items.length}
         </Link>
       </div>
