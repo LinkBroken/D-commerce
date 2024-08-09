@@ -6,26 +6,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Modal from "../Modal/Modal";
 import Skeleton from "../Skeleton/Skeleton";
-import axios from "axios";
+import addProduct from "../../helpers/addProduct"
 function MainSection() {
   const { storeData } = useContext(store);
   const { addItem, setModal } = useContext(Items);
   const [itemCount, setItemCount] = useState(1);
   useEffect(() => {
-    AOS.init();
-   
-   try{
-    const data = async ()=> { 
-      await axios.post("http://localhost:3000/books/",{
-      name: "mohamed",
-      status: "online"
-    })}
-    data()
-  }
-  catch(err){
-    console.log(err)
-}
-    
+    AOS.init(); 
     
   }, []);
   return (
@@ -55,6 +42,7 @@ function MainSection() {
                   buttonClick={() => {
                     addItem({ ...item, id: Math.random(), count: itemCount });
                     setModal(true);
+                    addProduct({...item})
 
                   }}
                   onChange={(e) => setItemCount(e.target.value)}
