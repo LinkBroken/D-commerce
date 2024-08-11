@@ -1,9 +1,11 @@
-export default function handleLogin(e,setAuth){
+import { json } from "react-router-dom";
+
+export default function handleLogin(e){
     e?.preventDefault();
-    const username = e.currentTarget.username.value;
+    const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
     const user = {
-        username: username,
+        email: email,
         password: password
     }
     fetch("http://localhost:3000/auth/login", {
@@ -14,6 +16,6 @@ export default function handleLogin(e,setAuth){
         body: JSON.stringify(user)
     })
     .then(res => res.text())
-    .then(data => setAuth(data))
+    .then(data => JSON.parse(data)["access_token"]? sessionStorage.setItem("token",JSON.parse(data)["access_token"]):null)
     .catch(err => console.log(err))
 }

@@ -53,7 +53,7 @@ Products.propTypes = {
   price: PropTypes.number.isRequired,
   imageClass: PropTypes.string,
   buttonClass: PropTypes.string,
-  buttonClick: PropTypes.func.isRequired,
+  buttonClick: PropTypes.func,
   itemClass: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.number

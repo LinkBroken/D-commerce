@@ -4,11 +4,9 @@ import { createContext, useEffect, useReducer, useState } from "react";
 export const Items = createContext({});
 
 function itemsReducer(state, action) {
-  // const items =
 
   switch (action.type) {
     case "ADD_TO_CART":
-      // console.log(state.items.map(item=> new Set(item)))
       return { ...state, items: [action.payload, ...state.items] };
     case "REMOVE_ITEM":
       return {

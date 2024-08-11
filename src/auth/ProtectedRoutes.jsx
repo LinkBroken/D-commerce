@@ -1,11 +1,10 @@
 import { Navigate, } from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
+// import { useContext } from 'react'
+import { token } from '../helpers/token'
  const PrivateRoutes = () => {
-    const {isAuth} = useContext(AuthContext)
    
     return (
-        isAuth == "true" ? "" : <Navigate to={'/login'}/>
+        token? null : <Navigate to={'/login'}/>
     )
   }
 
