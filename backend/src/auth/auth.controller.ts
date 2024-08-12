@@ -8,7 +8,6 @@ export class AuthController {
     constructor(private readonly AuthService: AuthService) {}
 
     @Post("login")
-    // @Redirect("/", 201)
     PostLogin(@Body() body: Loginbody) {
         return this.AuthService.PostLogin(body)
     }

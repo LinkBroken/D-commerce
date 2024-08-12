@@ -30,6 +30,12 @@ export const createUser = async (name: string, email: string,password:string)=>{
 
 export const addProduct = async (title:string, price: number, image: string, description: string, user_id: number)=>{
 
+    const productExist = await prisma.products.findFirst({
+        where:{
+          name: title  
+        }
+    })
+    productExist == undefined?
     await prisma.products.create({
         data: {
             name: title,
@@ -38,7 +44,7 @@ export const addProduct = async (title:string, price: number, image: string, des
             description: description,
             user_id: user_id
         }
-    })
+    }): "Product Exist"
 }
 
 export const findById = async (id:number)=>{
@@ -51,11 +57,25 @@ export const findById = async (id:number)=>{
 }
 
 export const findProductByUser = async(userId)=>{
-    const products = await  prisma.products.findMany({
+    const products = await prisma.products.findMany({
         where:{
             user_id: userId
         }
     })
     return products
 }
+
+export const removeProductByUser = async(userId:any,productName:string)=>{
+    await prisma.products.deleteMany({
+        where:{
+            user_id: userId,
+            AND:{
+                name: productName
+            }
+        }
+    })
+}
+
+
+
 export default {findByEmail, findByName, findById, createUser, addProduct}

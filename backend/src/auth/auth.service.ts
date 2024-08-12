@@ -1,6 +1,6 @@
-import { BadRequestException, Injectable, Req, UnauthorizedException } from '@nestjs/common';
-import { prisma } from 'src/prisma';
-import { findByName, findByEmail, createUser } from "../prisma";
+import { BadRequestException, Injectable,UnauthorizedException } from '@nestjs/common';
+import { prisma } from 'src/utilities/helpers';
+import { findByName, findByEmail, createUser } from "../utilities/helpers";
 import { JwtService } from '@nestjs/jwt';
 import { Loginbody, RegisterBody } from './Interfaces';
 

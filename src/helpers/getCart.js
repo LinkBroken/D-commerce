@@ -5,5 +5,5 @@ export default async function getCart(setState){
             Authorization:`Bearer ${sessionStorage.getItem("token")}`
         }
     }).then(Response=>Response.data).then(async(data)=>setState(await data))
-
+    
 }

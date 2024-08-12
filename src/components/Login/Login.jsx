@@ -1,17 +1,7 @@
 import handleLogin from "../../helpers/handleLogin"
-// import { AuthContext } from "../../context/AuthContext";
-// import { useContext } from "react";
-// import { Navigate } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
+
 function Login() {
 
-    // const {isAuth,setIsAuth} = useContext(AuthContext)
-    
-    // const token = localStorage.getItem("token");
-    // token?.length>6? setIsAuth("true"): null
-    // if(isAuth == "true"){
-    //     return <Navigate to="/" />
-    // }
     return (
         <div className=" flex flex-col p-24 items-center place-content-center min-h-screen">
             <form   onSubmit={(e)=>handleLogin(e)}   className=" flex flex-col items-center p-10 gap-7 bg-slate-600 rounded-xl w-fit text-white">
