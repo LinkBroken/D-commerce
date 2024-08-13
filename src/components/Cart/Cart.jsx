@@ -1,65 +1,40 @@
-import { useContext, useState, useEffect } from "react";
-import { Items } from "../../context/CartContext";
-
+import { useLayoutEffect, useState } from "react";
+import getCart from "../../helpers/getCart";
+import Products from "../Products/Products";
+import removeProduct from "../../helpers/removeProduct";
+import Skeleton from "../Skeleton/Skeleton";
 export default function Cart() {
-  const { state, removeItem, clearCart } = useContext(Items);
-  const [cartState, setCartState] = useState(state.items.length > 0);
 
-  useEffect(() => {
-    setCartState(state.items.length > 0);
-  }, [state.items]);
-  const data = new Set(state.items);
-
+  const [cartItems, setCartItems] = useState([])
+  const [removed,setRemoved] = useState(false)
+  useLayoutEffect(() => {
+    getCart(setCartItems)
+  },[removed])
+  console.log(cartItems)
   return (
-    <div className="min-h-96">
-      {cartState ? (
-        <>
-          <>
-            <button
-              className="p-3 w-1/8 ml-4 mt-4 h-12 bg-red-700 rounded-3xl text-white"
-              onClick={() => {
-                clearCart();
-              }}
-            >
-              Clear Cart
-            </button>
-          </>
-          <div className="grid grid-cols-3 w-full gap-8 place-items-center pt-10 pb-10 ">
-            {data &&
-              [...data].map((item, index) => (
-                <div
-                  className="flex flex-col justify-center pt-2 w-1/2 h-full gap-6 items-center rounded-xl border-zinc-200 border-solid border-2"
-                  key={index}
-                >
-                  <p className="text-center text-wrap w-5/6">{item.title}</p>
-                  <p>Quantitiy {item.count}</p>
-                  <img className="w-2/3" src={item.image} alt={item.title} />
-                  <p>Total Price: {parseInt(item.price * item.count)}$</p>
-                  <div className="flex flex-row-reverse justify-self-end  gap-6 ">
-                    <button
-                      className="p-3 w-1/2 h-12 bg-gray-400 rounded-3xl text-white"
-                      onClick={() => {
-                        removeItem(item.id);
-                      }}
-                    >
-                      Remove
-                    </button>
-                    <button
-                      className="p-3 h-12 w-1/2 bg-orange-600 mb-2 rounded-3xl text-white"
-                      onClick={() => {
-                        removeItem(item.id);
-                      }}
-                    >
-                      Checkout
-                    </button>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </>
-      ) : (
-        <p className="text-center pt-64 pb-64 text-3xl">No Items in Cart</p>
-      )}
+    <div className="min-h-[600px] place-items-center  p-8 grid grid-cols-3 gap-8 ">
+      {cartItems.length>0? cartItems.map((item, index) => 
+        
+          <Products
+            className=" hover:scale-105 flex flex-col pt-4 h-96 w-1/2 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
+            key={index} title={item.name} image={item.image} price={item.price}
+            imageClass="w-1/2 h-1/2"
+            itemClass="w-3/4 text-md bold mb-6"
+            buttonClass=" hidden"
+            inputClass="hidden"
+          ><button onClick={() => {
+            removeProduct(item.name);
+            setRemoved(!removed)}}
+
+          >Remove</button></Products>
+
+        
+      ): 
+      <div className="flex w-full gap-10">
+      <Skeleton/>
+      <Skeleton/>
+      </div>}
     </div>
+
   );
 }

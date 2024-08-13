@@ -1,14 +1,15 @@
-import { createContext, useState } from "react";
-import PropTypes from "prop-types";
-export const AuthContext = createContext({});
+// import { createContext } from "react";
+// import PropTypes from "prop-types";
+// import { token } from "../helpers/token";
+// export const AuthContext = createContext({});
 
-export default function AuthContextProvider({ children }) {
-    const [isAuth, setIsAuth] = useState(false);
-    return <AuthContext.Provider value={{ isAuth, setIsAuth }}>{children}</AuthContext.Provider>;
-}
+// export default function AuthContextProvider({ children }) {
+
+//     return <AuthContext.Provider value={{ token }}>{children}</AuthContext.Provider>;
+// }
 
 
-AuthContextProvider.propTypes ={
-        children: PropTypes.node.isRequired,
+// AuthContextProvider.propTypes ={
+//         children: PropTypes.node.isRequired,
       
-}
+// }

@@ -13,7 +13,8 @@ const Products = forwardRef(
       buttonClick,
       itemClass,
       onChange,
-      value
+      value,
+      children
     },
     ref
   ) => {
@@ -27,6 +28,7 @@ const Products = forwardRef(
           <button className={buttonClass} onClick={buttonClick}>
             Add
           </button>
+          {children}
           <section className="flex justify-evenly">
             <input
               ref={ref}
@@ -53,10 +55,11 @@ Products.propTypes = {
   price: PropTypes.number.isRequired,
   imageClass: PropTypes.string,
   buttonClass: PropTypes.string,
-  buttonClick: PropTypes.func.isRequired,
+  buttonClick: PropTypes.func,
   itemClass: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.number
+  value: PropTypes.number,
+  children: PropTypes.node
 };
 
 export default Products;
