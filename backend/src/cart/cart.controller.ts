@@ -13,7 +13,7 @@ export class CartController {
         return this.cartService.getCart(req)
     }
 
-    @Delete("/del")
+    @Delete()
     async removeItem(@Request() req:request){
         return this.cartService.removeItem(req)
 

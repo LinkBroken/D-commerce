@@ -17,12 +17,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from "@fortawesome/free-brands-svg-icons";
 import Results from "./components/Results/Results";
 import Login from "./components/Login/Login";
-// import  { AuthContextProvider } from "./context/AuthContext";
-import PrivateRoutes from "./auth/ProtectedRoutes";
 import { token } from "./helpers/token";
 
 function App() {
-  
+
   return (
     <>
       <StoreProvider>
@@ -43,24 +41,21 @@ function App() {
               />
             </Nav>
             <Routes>
-            
+
             </Routes>
             <Routes>
 
-            {/* <Route path="/cart" element={<PrivateRoutes/>}> */}
-            <Route path="/cart" element={<Cart />} />
-            {/* </Route> */}
-            <Route path="/" element={<Home />} />
-            { token?null:<Route path="/login" element={<Login />} />}
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/" element={<Home />} />
+              {token ? null : <Route path="/login" element={<Login />} />}
 
               <Route path="/footer" element={<Footer />} />
               <Route path="/main" element={<MainSection />} />
-              
+
               <Route path="/results" element={<Results />} />
 
             </Routes>
           </Router>
-          {/* </AuthContextProvider> */}
         </ItemsContextProvider>
         <Footer />
       </StoreProvider>

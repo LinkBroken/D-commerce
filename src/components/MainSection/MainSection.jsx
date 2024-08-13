@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,useState, useEffect } from "react";
 import { store } from "../../context/StoreDataContext";
 import Products from "../Products/Products";
 import { Items } from "../../context/CartContext";
@@ -7,13 +7,14 @@ import "aos/dist/aos.css";
 import Modal from "../Modal/Modal";
 import Skeleton from "../Skeleton/Skeleton";
 import addProduct from "../../helpers/addProduct"
+import Empty from "../EmptyModal/EmptyModal";
 function MainSection() {
   const { storeData } = useContext(store);
-  const { addItem, setModal } = useContext(Items);
-  const [itemCount, setItemCount] = useState(1);
+  const { setModal,setEmpty } = useContext(Items);
+  const [itemCount,setItemCount] = useState(0)
   useEffect(() => {
-    AOS.init(); 
-    
+    AOS.init();
+
   }, []);
   return (
     <>
@@ -21,6 +22,7 @@ function MainSection() {
       {storeData.length > 0 ? (
         <>
           <Modal />
+          <Empty/>
           {/* increase font size*/}
           <div className="pt-10 flex justify-evenly w-full ">
             <div
@@ -39,13 +41,24 @@ function MainSection() {
                   imageClass="w-1/2 h-1/2"
                   itemClass="w-3/4 text-md bold mb-6"
                   buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
+                  onChange = {(e)=> setItemCount(e.target.value) }
                   buttonClick={() => {
-                    addItem({ ...item, id: Math.random(), count: itemCount });
-                    setModal(true);
-                    addProduct({...item})
+                    
+                   itemCount!=0?
+                   (()=>{setModal(true)
+                   addProduct(
+                      {
+                        title: item.title.trim(),
+                        price: item.price*itemCount,
+                        image: item.image,
+                        description: item.description
+                      }
+
+                    )
+                    setItemCount(0)
+                  })():setEmpty(true)
 
                   }}
-                  onChange={(e) => setItemCount(e.target.value)}
                 />
               ))}
             </div>

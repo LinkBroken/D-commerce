@@ -1,9 +1,8 @@
 
-function Logout() {
+function Logout(onClick) {
+    
     return (
-        <button onClick={()=> sessionStorage.clear()
-
-        }>Logout</button>
+        <button onClick={onClick}>Logout</button>
     )
 }
 

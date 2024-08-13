@@ -65,13 +65,14 @@ export const findProductByUser = async(userId)=>{
     return products
 }
 
-export const removeProductByUser = async(userId:any,productName:string)=>{
+export const removeProductByUser = async(userId:number,productName:string)=>{
     await prisma.products.deleteMany({
         where:{
             user_id: userId,
             AND:{
                 name: productName
             }
+            
         }
     })
 }

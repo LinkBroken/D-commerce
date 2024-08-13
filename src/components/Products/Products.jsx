@@ -58,7 +58,8 @@ Products.propTypes = {
   buttonClick: PropTypes.func,
   itemClass: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.number
+  value: PropTypes.number,
+  children: PropTypes.node
 };
 
 export default Products;

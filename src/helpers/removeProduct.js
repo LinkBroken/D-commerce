@@ -1,7 +1,6 @@
 import axios from "axios"
 export const removeProduct = async (productName) => {
-    axios.delete("http://localhost:3000/cart/del",  {
-        // params:productName,
+    axios.delete("http://localhost:3000/cart",  {
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
