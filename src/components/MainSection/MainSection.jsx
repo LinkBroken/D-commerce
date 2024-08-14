@@ -1,4 +1,4 @@
-import { useContext,useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { store } from "../../context/StoreDataContext";
 import Products from "../Products/Products";
 import { Items } from "../../context/CartContext";
@@ -10,8 +10,8 @@ import addProduct from "../../helpers/addProduct"
 import Empty from "../EmptyModal/EmptyModal";
 function MainSection() {
   const { storeData } = useContext(store);
-  const { setModal,setEmpty } = useContext(Items);
-  const [itemCount,setItemCount] = useState(0)
+  const { setModal, setEmpty } = useContext(Items);
+  const [itemCount, setItemCount] = useState(0)
   useEffect(() => {
     AOS.init();
 
@@ -22,7 +22,7 @@ function MainSection() {
       {storeData.length > 0 ? (
         <>
           <Modal />
-          <Empty/>
+          <Empty text={sessionStorage.getItem("token") ? "continue Shopping" : "Sign in to Continue Shopping"} quantatiy={sessionStorage.getItem("token") ? "Select A quantatiy" : "You are not logged in"} />
           {/* increase font size*/}
           <div className="pt-10 flex justify-evenly w-full ">
             <div
@@ -41,22 +41,26 @@ function MainSection() {
                   imageClass="w-1/2 h-1/2"
                   itemClass="w-3/4 text-md bold mb-6"
                   buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
-                  onChange = {(e)=> setItemCount(e.target.value) }
+                  onChange={(e) => setItemCount(e.target.value)}
                   buttonClick={() => {
-                    
-                   itemCount!=0?
-                   (()=>{setModal(true)
-                   addProduct(
-                      {
-                        title: item.title.trim(),
-                        price: item.price*itemCount,
-                        image: item.image,
-                        description: item.description
-                      }
 
-                    )
-                    setItemCount(0)
-                  })():setEmpty(true)
+                    itemCount != 0 ?
+                      (() => {
+
+                        sessionStorage.getItem("token") ? (() => {
+                          addProduct(
+                            {
+                              title: item.title.trim(),
+                              price: item.price * itemCount,
+                              image: item.image,
+                              description: item.description
+                            }
+
+                          )
+                          setModal(true)
+                        })() : setEmpty(true)
+                        setItemCount(0)
+                      })() : setEmpty(true)
 
                   }}
                 />

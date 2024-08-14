@@ -1,13 +1,16 @@
 
-export default function handleLogin(e){
+export const register = function register(e,setSignUp){
     e?.preventDefault();
+    const name = e.currentTarget.name.value;
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
+
     const user = {
+        name: name,
         email: email,
         password: password
     }
-    fetch("http://localhost:3000/auth/login", {
+    fetch("http://localhost:3000/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -15,6 +18,8 @@ export default function handleLogin(e){
         body: JSON.stringify(user)
     })
     .then(res => res.text())
-    .then(data => JSON.parse(data)["access_token"]? sessionStorage.setItem("token",JSON.parse(data)["access_token"]):null)
-    .catch(err => console.log(err))
+    .then(data => setSignUp(JSON.parse(data).message))
+    .catch(err => err)
 }
+
+export default register

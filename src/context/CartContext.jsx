@@ -7,19 +7,26 @@ function ItemsContextProvider({ children }) {
 
   const [modal, setModal] = useState(false);
   const [search, setSearch] = useState("");
-  const [empty, setEmpty] = useState(false)
+  const [empty, setEmpty] = useState(false);
+  const [signUp, setSignUp] = useState(false)
+
   useEffect(() => {
     modal
       ? setTimeout(() => {
           setModal(false);
-        }, 4000)
+        }, 1500)
       : null;
       empty
       ? setTimeout(() => {
           setEmpty(false);
-        }, 4000)
+        }, 1500)
       : null;
-  }, [modal,empty]);
+      signUp
+      ? setTimeout(() => {
+        setSignUp(false);
+        }, 1500)
+      : null;
+  }, [modal,empty,signUp]);
 
 
 
@@ -32,7 +39,9 @@ function ItemsContextProvider({ children }) {
         search,
         setSearch,
         setEmpty,
-        empty
+        empty,
+        setSignUp,
+        signUp
       }}
     >
       {children}

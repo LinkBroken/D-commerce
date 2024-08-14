@@ -14,7 +14,7 @@ function Results() {
   ];
 
   const { storeData } = useContext(store);
-  const { search, setModal,setEmpty } = useContext(Items);
+  const { search, setModal, setEmpty } = useContext(Items);
   const [itemCount, setItemCount] = useState(0);
   const [priceRange, setPriceRange] = useState(1000);
   const [category, setCategory] = useState(categories);
@@ -84,7 +84,7 @@ function Results() {
       {[...storeData].length >= 1 ? (
         <div className="pt-10 flex justify-evenly  mb-8">
           <Modal />
-          <Empty/>
+          <Empty text={sessionStorage.getItem("token") ? "continue Shopping" : "Sign in to Continue Shopping"} quantatiy={sessionStorage.getItem("token") ? "Select A quantatiy" : "You are not logged in"} />
           <div
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
@@ -98,33 +98,37 @@ function Results() {
                 item.price < priceRange &&
                 category.includes(item.category) && (
                   <Products
-                  key={index}
-                  className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
-                  image={item.image}
-                  price={item.price}
-                  title={item.title}
-                  imageClass="w-1/2 h-1/2"
-                  itemClass="w-3/4 text-md bold mb-6"
-                  buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
-                  onChange = {(e)=> setItemCount(e.target.value) }
-                  buttonClick={() => {
-                    
-                   itemCount!=0?
-                   (()=>{setModal(true)
-                   addProduct(
-                      {
-                        title: item.title.trim(),
-                        price: item.price*itemCount,
-                        image: item.image,
-                        description: item.description
-                      }
+                    key={index}
+                    className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
+                    image={item.image}
+                    price={item.price}
+                    title={item.title}
+                    imageClass="w-1/2 h-1/2"
+                    itemClass="w-3/4 text-md bold mb-6"
+                    buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
+                    onChange={(e) => setItemCount(e.target.value)}
+                    buttonClick={() => {
 
-                    )
-                    setItemCount(0)
-                  })():setEmpty(true)
-
-                  }}
-                />
+                      itemCount != 0 ?
+                        (() => {
+  
+                          sessionStorage.getItem("token") ? (() => {
+                            addProduct(
+                              {
+                                title: item.title.trim(),
+                                price: item.price * itemCount,
+                                image: item.image,
+                                description: item.description
+                              }
+  
+                            )
+                            setModal(true)
+                          })() : setEmpty(true)
+                          setItemCount(0)
+                        })() : setEmpty(true)
+  
+                    }}
+                  />
                 )
             )}
           </div>

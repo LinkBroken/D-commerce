@@ -1,10 +1,10 @@
-import { BadRequestException, Injectable,UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { prisma } from 'src/utilities/helpers';
 import { findByName, findByEmail, createUser } from "../utilities/helpers";
 import { JwtService } from '@nestjs/jwt';
 import { Loginbody, RegisterBody } from './Interfaces';
-
-
+import isEmailValid from './validations/email';
+import { hasUppercaseLetter, isPasswordMinLength } from './validations/password';
 
 
 export const users = prisma.user.findMany()
@@ -46,14 +46,28 @@ export class AuthService {
         try {
             const email = await findByEmail(body.email);
             const name = await findByName(body.name)
-
-            if (name) {
+            if (name == true && email == false) {
                 throw new BadRequestException("User already exists")
             }
-            else if (email) {
+            else if (email == true && name == false) {
                 throw new BadRequestException("Email already exists")
             }
+            else if (email == true && name == true) {
+                throw new BadRequestException("Email and username already exists")
+            }
             else {
+                if (!isEmailValid(body.email)) {
+                    throw new BadRequestException("Invalid Email")
+                }
+                else if (!isPasswordMinLength(body.password)) {
+                    throw new BadRequestException("Password at least should be 8 characters")
+                }
+                else if (!hasUppercaseLetter(body.password)) {
+                    throw new BadRequestException("Password should at least contain 1 upper case letter")
+                }
+                else if (body.name.length < 4) {
+                    throw new BadRequestException("Username should at least be 4 characters")
+                }
                 await createUser(body.name, body.email, body.password)
                 return "User created"
             }

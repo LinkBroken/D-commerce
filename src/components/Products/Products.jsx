@@ -47,7 +47,6 @@ const Products = forwardRef(
   }
 );
 
-// Define prop types
 Products.propTypes = {
   className: PropTypes.string,
   image: PropTypes.string.isRequired,

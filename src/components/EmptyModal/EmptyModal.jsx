@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Items } from "../../context/CartContext";
 
-const Empty = ({ ...props }) => {
+const Empty = ({ text,quantatiy, ...props }) => {
   const modalRef = useRef(null);
   const { empty, setEmpty } = useContext(Items);
   return createPortal(
@@ -16,13 +16,13 @@ const Empty = ({ ...props }) => {
         {...props}
         ref={modalRef}
       >
-        <h1 className=" text-lg text-black">Select a quantatity</h1>
+        <h1 className=" text-lg text-black">{quantatiy}</h1>
         <section className="flex justify-evenly w-full gap-8">
           <button
             className="  bg-teal-300 p-2 w-full rounded-xl"
             onClick={() => setEmpty((prev) => !prev)}
           >
-            Continue Shopping 
+            {text} 
           </button>
         </section>
       </dialog>

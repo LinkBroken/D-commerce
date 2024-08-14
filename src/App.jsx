@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcAmazonPay as icon } from "@fortawesome/free-brands-svg-icons";
 import Results from "./components/Results/Results";
 import Login from "./components/Login/Login";
-import { token } from "./helpers/token";
+import Register from "./components/Register/Register";
 
 function App() {
 
@@ -25,7 +25,6 @@ function App() {
     <>
       <StoreProvider>
         <ItemsContextProvider>
-          {/* <AuthContextProvider> */}
           <Router>
             <Nav className="flex w-1/3 justify-between items-center ">
               <div className="flex flex-row-reverse items-center gap-4 ">
@@ -47,8 +46,8 @@ function App() {
 
               <Route path="/cart" element={<Cart />} />
               <Route path="/" element={<Home />} />
-              {token ? null : <Route path="/login" element={<Login />} />}
-
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/footer" element={<Footer />} />
               <Route path="/main" element={<MainSection />} />
 

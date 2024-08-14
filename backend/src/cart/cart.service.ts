@@ -22,9 +22,9 @@ export class CartService {
         try {
             const userId = this.jwtService.decode(req.get("authorization").split(" ")[1])?.sub
             const product = req.get("name");
-            
+
             removeProductByUser(userId, product)
-            
+
 
         }
         catch (err) {
