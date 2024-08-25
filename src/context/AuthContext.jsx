@@ -1,15 +1,19 @@
-// import { createContext } from "react";
-// import PropTypes from "prop-types";
-// import { token } from "../helpers/token";
-// export const AuthContext = createContext({});
+import { createContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
+export const AuthContext = createContext({});
 
-// export default function AuthContextProvider({ children }) {
+export default function AuthContextProvider({ children }) {
+    const [login,setLogin] = useState(true)
 
-//     return <AuthContext.Provider value={{ token }}>{children}</AuthContext.Provider>;
-// }
+    let JWT = sessionStorage.getItem("token")
+    useEffect(()=>{
+        JWT?setLogin(false):setLogin(true)
+    },[JWT])
+    return <AuthContext.Provider value={{login,setLogin }}>{children}</AuthContext.Provider>;
+}
 
 
-// AuthContextProvider.propTypes ={
-//         children: PropTypes.node.isRequired,
-      
-// }
+AuthContextProvider.propTypes ={
+        children: PropTypes.node.isRequired,
+
+}

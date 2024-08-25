@@ -17,14 +17,14 @@ const RegModal = ({ text, ...props }) => {
         autoFocus={false}
         className={
           signUp
-            ? "mt-10 fixed top-20  pl-10 pr-10 p-14 flex flex-col items-center gap-6  text-white bg-zinc-50 rounded-xl"
+            ? "mt-10 fixed top-20  p-8 flex flex-col items-center gap-6  text-white bg-zinc-50 rounded-xl"
             : "none"
         }
         {...props}
         ref={modalRef}
       >
         <section className="flex flex-col  items-center w-full pl-10 pr-10  ">
-          <FontAwesomeIcon enableBackground={true} className=" bg-red-700 p-2  rounded-lg  mb-5 bt-5" icon={icon} size="5x" />
+          <FontAwesomeIcon enableBackground={true} className=" text-red-900" icon={icon} size="2x" />
           <h1
             className=" text-black text-md p-2 w-full rounded-xl"
           >

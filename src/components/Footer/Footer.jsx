@@ -7,7 +7,8 @@ import {
 
 function Footer() {
   return (
-    <div className=" bg-teal-900 p-4 flex justify-evenly">
+    
+    <div className="bottom-0 w-full bg-teal-900 p-4 flex justify-evenly">
       <div className="flex flex-col text-white gap-4 pt-9 ">
         <p>Election</p>
         <p>64 st james boulevard</p>

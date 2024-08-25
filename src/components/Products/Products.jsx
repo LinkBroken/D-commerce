@@ -14,7 +14,8 @@ const Products = forwardRef(
       itemClass,
       onChange,
       value,
-      children
+      children,
+      inputStyle
     },
     ref
   ) => {
@@ -32,7 +33,8 @@ const Products = forwardRef(
           <section className="flex justify-evenly">
             <input
               ref={ref}
-              className=" bg-slate-200 w-3/4 text-black "
+              className={inputStyle}
+              // className=" bg-slate-200 w-3/4 text-black "
               type="number"
               name="items"
               id=""
@@ -58,7 +60,8 @@ Products.propTypes = {
   itemClass: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.number,
-  children: PropTypes.node
+  children: PropTypes.node,
+  inputStyle: PropTypes.string,
 };
 
 export default Products;

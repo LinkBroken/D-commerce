@@ -35,13 +35,14 @@ function MainSection() {
                 <Products
                   key={index}
                   className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
-                  image={item.image}
+                  image={item.images[0]?item.images[0]:item.images}
                   price={item.price}
-                  title={item.title}
+                  title={item?.title}
                   imageClass="w-1/2 h-1/2"
                   itemClass="w-3/4 text-md bold mb-6"
                   buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
                   onChange={(e) => setItemCount(e.target.value)}
+                  inputStyle=" bg-slate-200 w-3/4 text-black"
                   buttonClick={() => {
 
                     itemCount != 0 ?
@@ -52,7 +53,7 @@ function MainSection() {
                             {
                               title: item.title.trim(),
                               price: item.price * itemCount,
-                              image: item.image,
+                              image: item.images[0],
                               description: item.description
                             }
 

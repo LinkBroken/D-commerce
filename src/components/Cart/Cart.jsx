@@ -12,7 +12,7 @@ export default function Cart() {
   },[removed])
   console.log(cartItems)
   return (
-    <div className="min-h-[600px] place-items-center  p-8 grid grid-cols-3 gap-8 ">
+    <div className="min-h-[600px] place-items-center  p-12 grid grid-cols-3 gap-8 ">
       {cartItems.length>0? cartItems.map((item, index) => 
         
           <Products
@@ -20,13 +20,13 @@ export default function Cart() {
             key={index} title={item.name} image={item.image} price={item.price}
             imageClass="w-1/2 h-1/2"
             itemClass="w-3/4 text-md bold mb-6"
-            buttonClass=" hidden"
-            inputClass="hidden"
-          ><button onClick={() => {
+            buttonClass="hidden"
+            inputStyle="hidden"
+          ><button className="bg-green-700 text-white p-2 absolute right-1/5 left-1/5 rounded-xl hover:bg-green-600"  onClick={() => {
             removeProduct(item.name);
             setRemoved(!removed)}}
 
-          >Remove</button></Products>
+          >Check Out</button></Products>
 
         
       ): 

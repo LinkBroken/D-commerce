@@ -18,11 +18,12 @@ import { faCcAmazonPay as icon } from "@fortawesome/free-brands-svg-icons";
 import Results from "./components/Results/Results";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-
+import AuthContextProvider from "./context/AuthContext";
 function App() {
-
+  
   return (
     <>
+    <AuthContextProvider>
       <StoreProvider>
         <ItemsContextProvider>
           <Router>
@@ -58,6 +59,7 @@ function App() {
         </ItemsContextProvider>
         <Footer />
       </StoreProvider>
+      </AuthContextProvider>
     </>
   );
 }

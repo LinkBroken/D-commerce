@@ -7,10 +7,11 @@ import Empty from "../EmptyModal/EmptyModal";
 import addProduct from "../../helpers/addProduct";
 function Results() {
   const categories = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing",
+    "Clothes",
+    "Electronics",
+    "Furniture",
+    "Shoes",
+    "Miscellaneous"
   ];
 
   const { storeData } = useContext(store);
@@ -43,40 +44,50 @@ function Results() {
         </div>
         <div className="flex flex-col justify-evenly w-1/4 gap-4 flex-start">
           <section className="flex w-36 justify-evenly">
+            <label className="w-3/5">Clothes</label>
+            <input
+              defaultChecked
+              className="w-1/8 accent-green-600"
+              type="checkbox"
+              value="Clothes"
+              onClick={() => selectCategory(categories[0])}
+            />
+          </section>
+          <section className="flex w-36 justify-evenly">
             <label className="w-3/5">Electronics</label>
             <input
               defaultChecked
               className="w-1/8 accent-green-600"
               type="checkbox"
-              value="electronics"
-              onClick={() => selectCategory(categories[0])}
+              onClick={() => selectCategory(categories[1])}
             />
           </section>
           <section className="flex w-36 justify-evenly">
-            <label className="w-3/5">Men</label>
+            <label className="w-3/5">Furniture</label>
             <input
               defaultChecked
-              className="w-1/8 accent-green-600"
               type="checkbox"
               onClick={() => selectCategory(categories[2])}
+              className="w-1/8 accent-green-600"
             />
           </section>
           <section className="flex w-36 justify-evenly">
-            <label className="w-3/5">Women</label>
+            <label className="w-3/5 text-md">Shoes</label>
             <input
               defaultChecked
+              className="w-1/8 accent-green-600"
               type="checkbox"
               onClick={() => selectCategory(categories[3])}
-              className="w-1/8 accent-green-600"
             />
           </section>
           <section className="flex w-36 justify-evenly">
-            <label className="w-3/5 text-md">Jewlery</label>
+            <label className="w-3/5">Misc</label>
             <input
               defaultChecked
               className="w-1/8 accent-green-600"
               type="checkbox"
-              onClick={() => selectCategory(categories[1])}
+              value="Miscellaneous"
+              onClick={() => selectCategory(categories[4])}
             />
           </section>
         </div>
@@ -89,24 +100,26 @@ function Results() {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             data-aos="fade-right"
-            className="grid grid-cols-3 place-items-center gap-6 h-full w-full"
+            className="grid grid-cols-3 min-w-screen place-items-center gap-6 h-full w-full"
           >
             {[...storeData].map(
               // fix padding issue regarding the products section
               (item, index) =>
                 item.title.toLowerCase().includes(search.toLowerCase()) &&
                 item.price < priceRange &&
-                category.includes(item.category) && (
+                category.includes(item.category.name) && (
                   <Products
                     key={index}
-                    className=" hover:scale-105 flex flex-col pt-4 h-96 w-3/6 mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
-                    image={item.image}
+                    className=" hover:scale-105 flex flex-col pt-4 h-96 min-w-2/3 w-2/3   mb-6  justify-evenly items-center border-zinc-200 border-solid border-2 "
+                    image={item.images[0]}
                     price={item.price}
                     title={item.title}
                     imageClass="w-1/2 h-1/2"
                     itemClass="w-3/4 text-md bold mb-6"
                     buttonClass="p-3 text-white bg-orange-400  rounded-3xl"
                     onChange={(e) => setItemCount(e.target.value)}
+                    
+                    inputStyle=" bg-slate-200 w-3/4 text-black"
                     buttonClick={() => {
 
                       itemCount != 0 ?
@@ -117,7 +130,7 @@ function Results() {
                               {
                                 title: item.title.trim(),
                                 price: item.price * itemCount,
-                                image: item.image,
+                                image: item.images[0],
                                 description: item.description
                               }
   
